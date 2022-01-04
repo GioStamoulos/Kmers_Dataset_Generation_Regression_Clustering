@@ -1,0 +1,19 @@
+{
+  "genes": {
+    "files": [
+      {
+        "filePath": "gene.fna",
+        "fileType": "GENOMIC_NUCLEOTIDE_FASTA"
+      },
+      {
+        "filePath": "data_report.jsonl",
+        "fileType": "DATA_REPORT"
+      },
+      {
+        "filePath": "data_table.tsv",
+        "fileType": "DATA_TABLE"
+      }
+    ]
+  },
+  "apiVersion": "V1"
+}
