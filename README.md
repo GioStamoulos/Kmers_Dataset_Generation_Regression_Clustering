@@ -1,5 +1,5 @@
 ## About
-The generation of a k-mer dataset that is associated with multiple genome sequences
+The generation of a kmers dataset that is associated with multiple genome sequences
 and the further manipulation of this generated dataset are the main contents of the
 current project. Specifically, psbH photosystem II protein H [1] that constitutes the
 organism Coffea arabica was utilized and was set as a query in the BLAST tool-
@@ -229,7 +229,7 @@ Figure 6: E_value - Total_score plot for 3-mers clustered dataset.
 ```
 ![Total_score_Acc_length](https://user-images.githubusercontent.com/60938391/148864982-26057031-db3c-4720-a507-e97a799bd35f.png)
 ```
-Figure 7: Total_score - Accession_lenght plot for 3-mers clustered dataset.
+Figure 7: Total_score - Accession_length plot for 3-mers clustered dataset.
 ```
 
 
