@@ -1,4 +1,3 @@
-
 ## About
 
 The generation of a k-mer dataset that is associated with multiple genome sequences and the further manipulation of this generated dataset are the main contents of the current project. Specifically, psbH photosystem II protein H [1] that constitutes the organism Coffea arabica was utilized and was set as a query in the BLAST tool- algorithm [2]. Then, the output of the search, namely all the genes and proteins that were defined as most relevant by BLAST, was downloaded into the fasta complete file.
@@ -19,7 +18,7 @@ The generation of a k-mer dataset that is associated with multiple genome sequen
  </p>
 
 ```
-                                                      Figure 1: Workflow.
+Figure 1: Workflow.
 ```                                                   
                                                         
 
@@ -74,11 +73,6 @@ could create a string with a length equal to the k number of characters (k_mers)
 generated. In the create_dataset function,
 
 - A list of headers is required to be defined.
-
-
-```
-Figure 2: A gene’s fasta file example.
-```
 - An initially empty dictionary is created that has as its keys the elements of
     the header list.
 - Then, the output folder is looped through and the k_mers information is
@@ -95,14 +89,19 @@ that is most related to the genome query of BLAST. The previous file is split in
 fasta files that correspond to unique genes. The format of a fasta file is shown in
 the figure 2.
 
+![fasta](https://user-images.githubusercontent.com/60938391/148865934-123f677e-3140-4e41-abd4-81adddedacda.png)
+```
+Figure 2: A gene’s fasta file example.
+```
 Then every fasta file is given as input to the count_kmers script, and a csv file
 is given as output with the format that is captured in the figure. Then, all output
 files are concatenated and finally compiled into the kmers dataset csv file (figure 3)
-with the first dimension equal to number of genes and the second equal tok^4.
+with the first dimension equal to number of genes and the second equal to k^4 .
 
-
+![Screenshot_4](https://user-images.githubusercontent.com/60938391/148866180-539e86bd-bdc0-4341-b6c4-444f44353cdb.png)
+```
 Figure 3: A kmers dataset example.
-
+```
 
 ## Data manipulation
 
@@ -196,17 +195,14 @@ length of every gene. The figures 4 to 7 are associated with the 3mers dataset�
 ```
 Figure 4: Isomap 2D plot for 3-mers clustered dataset.
 ```
-
 ![Acc_length_Acc_length](https://user-images.githubusercontent.com/60938391/148864907-38d9c8cd-9edc-47e3-a4c1-4483943bd318.png)
 ```
 Figure 5: Accession_lenght - E_value plot for 3-mers clustered dataset.
 ```
-
 ![E_value_Acc_length](https://user-images.githubusercontent.com/60938391/148864961-85b5617f-3adc-43ab-8f82-b7278f48bf46.png)
 ```
 Figure 6: E_value - Total_score plot for 3-mers clustered dataset.
 ```
-
 ![Total_score_Acc_length](https://user-images.githubusercontent.com/60938391/148864982-26057031-db3c-4720-a507-e97a799bd35f.png)
 ```
 Figure 7: Total_score - Accession_lenght plot for 3-mers clustered dataset.
