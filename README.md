@@ -1,14 +1,38 @@
 ## About
+The generation of a k-mer dataset that is associated with multiple genome sequences
+and the further manipulation of this generated dataset are the main contents of the
+current project. Specifically, psbH photosystem II protein H [1] that constitutes the
+organism Coffea arabica was utilized and was set as a query in the BLAST tool-
+algorithm [2]. Then, the output of the search, namely all the genes and proteins that
+were defined as most relevant by BLAST, was downloaded into the fasta complete
+file.
 
-The generation of a k-mer dataset that is associated with multiple genome sequences and the further manipulation of this generated dataset are the main contents of the current project. Specifically, psbH photosystem II protein H [1] that constitutes the organism Coffea arabica was utilized and was set as a query in the BLAST tool- algorithm [2]. Then, the output of the search, namely all the genes and proteins that were defined as most relevant by BLAST, was downloaded into the fasta complete file.
+Every gene/protein was split into its unique fasta file using python scripts that
+are described in Section 2, and fasta files are given as input to the count kmers
+perl script to calculate the frequency of occurence of every possible combination
+of k nucleotide letters. Every output of the perl count_kmers script [3] is written
+in a csv that corresponds to a unique gene/protein, and finally, all csv files are
+concatenated into the complete kmers dataset csv file. This complete csv file has as
+headers the gene name and all the possible combinations of k nucleotide letters.
 
-  Every gene/protein was split into its unique fasta file using python scripts and fasta files are given as input to the count kmers perl script to calculate the frequency of occurence of every possible combination of k nucleotide letters. Every output of the perl count_kmers script [3] is written in a csv that corresponds to a unique gene/protein, and finally, all csv files are concatenated into the complete kmers dataset csv file. This complete csv file has as headers the gene name and all the possible combinations of k nucleotide letters.
-  
-  The summary kmers csv file is further utilized for regression and clustering implementations. Firstly, normalization of the dataset is applied in a range of 0 to 1 value. Then the k-means unsupervised learning algorithm is utilized for dataset clustering, and then the Isomap dimensionality reduction algorithm is performed for the 2D visualizations of the clustered dataset.
-  
-  Furthermore, 2D plots of dataset labeled samples are performed using genes’ accession length and the BLAST search metrics, namely E-value, and total score, which are included in the description file that can be downloaded from the BLAST result output page. Previous plots are being implemented to investigate if the gene kmers feature-based clustering could approximate the relationship between genes depending on BLAST metrics. Examining whether the labeled samples are gathered in some 2D BLAST metrics dimensional space is one way to evaluate this approximation.
-  
-  The Support Vector Regression algorithm is utilized to predict the e-value and total score values in order to have a fast algorithm for extracting useful information from large datasets. The workflow described above is shown in Figure 1.
+The summary kmers csv file is further utilized for regression and clustering im
+plementations. Firstly, normalization of the dataset is applied in a range of 0 to
+1 value. Then the k-means unsupervised learning algorithm is utilized for dataset
+clustering, and then the Isomap dimensionality reduction algorithm is performed for
+the 2D visualizations of the clustered dataset.
+
+Furthermore, 2D plots of dataset labeled samples are performed using genes’
+accession length and the BLAST search metrics, namely E-value, and total score,
+which are included in the description file that can be downloaded from the BLAST
+result output page. Previous plots are being implemented to investigate if the gene
+kmers feature-based clustering could approximate the relationship between genes
+depending on BLAST metrics. Examining whether the labeled samples are gath
+ered in some 2D BLAST metrics dimensional space is one way to evaluate this
+approximation.
+
+The Support Vector Regression algorithm is utilized to predict the e-value and
+total score values in order to have a fast algorithm for extracting useful information
+from large datasets. The workflow described above is shown in Figure 1.
   
   
 ![pipeline_bio_project](https://user-images.githubusercontent.com/60938391/148859532-d7368803-d3e5-4e12-9105-e7485d03e6af.png)
@@ -27,7 +51,7 @@ Figure 1: Workflow.
 Two classes was created, namely create_kmers_output and
 kmers_dataset for this purpose. All the implementations were developed utilizing
 python language. Additionally, all the the function of these classes were utilized
-through main python script. The pattern (way) to run main script through com-
+through main python script. The pattern (way) to run main script through com
 mand line is :
 
 cd scripts_path
@@ -39,7 +63,7 @@ Algorithm 1: Bash commands to run main script for generating kmers dataset.
 ```
 ### Create_kmers_output Class
 
-The create_kmers_output class requires the following to be defined: k_mers (inte-
+The create_kmers_output class requires the following to be defined: k_mers (inte
 ger k number), script_name (perl script that counts kmers), genome_file (BLAST
 fasta output), genome_folder, input_folder, and output_folder. It is composed of
 two functions, namely, the fasta_generator and the folder_loop. In the fasta_generator
@@ -107,7 +131,7 @@ Figure 3: A kmers dataset example.
 
 ### Overview
 
-After the data harvesting, the kmers dataset was utilized for regression and cluster-
+After the data harvesting, the kmers dataset was utilized for regression and cluster
 ing tasks. Specifically, the dataset was used for the prediction of BLAST metrics
 for every gene and protein that constitutes the dataset. The clustering task focuses
 on the evaluation of a k-mer analysis as a gene discrimination method that could
@@ -121,7 +145,7 @@ Pandas library and the SVG algorithm from the Sklearn library are used to proces
 data.
 
 Then the initial dataset is split into two parts: 60% for the train set and 40% for
-the final test set.The GridSearch technique is used with five repetitions per combi-
+the final test set.The GridSearch technique is used with five repetitions per combi
 nation of parameters to estimate the best regression model for the current dataset.
 Finally, the SVR model with the best grid search hyperparameters is applied to the
 kmers dataset and the Root Mean Square Error (RMSE) metric is calculated for
@@ -160,7 +184,7 @@ length were used for further implementations.
 ### Regression
 
 Regression tasks were applied in four generated kmers datasets, namely 3mers,
-4mers, 5mers, and 6mers. For every task the regression task is focusing on pre-
+4mers, 5mers, and 6mers. For every task the regression task is focusing on pre
 diction of BLAST metrics, namely either E-value or total score.
 
 The main metric that was utilized for evaluation of every regression progress is
@@ -183,7 +207,7 @@ Table 1: RMSE regression error for different BLAST metrics targets and different
 
 ### Clustering
 
-In this section, all the output-plots that are associated with clustering implementa-
+In this section, all the output-plots that are associated with clustering implementa
 tion are presented. There are four types of plots that are implemented. The first
 type shows the distibution of the kmers dataset after kmeans clustering and 2D
 isomap dimensionally reduction, using as label the output labels of clustering. The
@@ -228,7 +252,7 @@ faster results for a much larger dataset.
 
 ### Clustering
 
-For all the datasets that were utilized, their clustering coclusions are almost al-
+For all the datasets that were utilized, their clustering coclusions are almost al
 ways the same. The plots of the Isomap dimensionally reduced kmers datasets
 after kmeans clustering demonstrate that clusters can be easily distinguished in this
 dimensional space.One of the three clusters is remote from the other two and is
@@ -236,11 +260,11 @@ composed of fewer samples than the other two.
 
 In the plots of clustered datasets in the BLAST metrics (E-value and Total score)
 2D dimensional space, the samples are shuffled and can not be discriminate. This
-fact is reasonable because the datasets were not clustered with these features. Pre-
+fact is reasonable because the datasets were not clustered with these features. Pre
 vious plots were performed to investigate the case that kmers clustering way could
 approximate the hierarchical discrimination that is provided by BLAST metrics.
 
-For plots where one axis corresponds to accession length, clusters are distin-
+For plots where one axis corresponds to accession length, clusters are distin
 guished and don’t overlap. This fact reveals that genes with the same accuracy
 length scale are in the same cluster. Thus, k-mers dataset clustering is indirectly
 influenced by the lengths of genes’ nucleotide sequences.
