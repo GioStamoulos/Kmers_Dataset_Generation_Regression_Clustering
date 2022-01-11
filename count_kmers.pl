@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 # script imported from 
+# https://github.com/lindberg-m/count_kmers
 
 use strict;
 use warnings;
